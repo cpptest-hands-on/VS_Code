@@ -18,7 +18,7 @@ permissions: write-all
 jobs:
   test-cpptest:
     name: Analyze project with C/C++test
-    runs-on: hands-on-label-1
+    runs-on: vscode_label
 
     steps:
     - name: Checkout code
@@ -27,7 +27,7 @@ jobs:
     - name: Generate BDF
       env:
         CPPTEST_SCAN_PROJECT_NAME: FlowAnalysis
-      run: C:/cpptest/bin/cpptesttrace.exe make all
+      run: C:/Disk_D/parasoft/2021.x/cpptest_standard/cpptest/bin/cpptesttrace.exe make all
       working-directory: ./FlowAnalysis
       
     #- name: Generate Local Settings
@@ -45,7 +45,7 @@ jobs:
       # Use the 'run-cpptest-action' GitHub Action.
       uses: parasoft/run-cpptest-action@1.0.1
       with:
-        installDir: 'C:\cpptest'
+        installDir: 'C:\Disk_D\parasoft\2021.x\cpptest_standard\cpptest'
         compilerConfig: 'gcc_9-64'
         testConfig: 'builtin://Flow Analysis Aggressive'
        # reportDir:  './FlowAnalysis/report'
@@ -54,7 +54,7 @@ jobs:
         # For Standard
          # additionalParams: '-property report.custom.extension=sarif -property report.custom.xsl.file=${PARASOFT_SARIF_XSL}'
          # commandLinePattern : ' ${cpptestcli} -data ../workspace -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams} '
-        additionalParams: '-localsettings ./FlowAnalysis/setting.properties'
+        additionalParams: '-localsettings ./FlowAnalysis/cpptestcli.properties'
         commandLinePattern: '${cpptestcli} -data ./ -config "${testConfig}" -report "${reportDir}" -bdf "${input}" ${additionalParams}'
     - name: ls_check_report
       run: |
