@@ -28,7 +28,7 @@ jobs:
       env:
         CPPTEST_SCAN_PROJECT_NAME: FlowAnalysis
       run: C:/Disk_D/parasoft/2021.x/cpptest_standard/cpptest/bin/cpptesttrace.exe make all
-      working-directory: ./FlowAnalysis
+      working-directory: FlowAnalysis
       
     #- name: Generate Local Settings
       #run: |
